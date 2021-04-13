@@ -17,5 +17,3 @@ function connection(){
 
     return $pdo;
 }
-
-?>
