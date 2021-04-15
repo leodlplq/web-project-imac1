@@ -2,6 +2,8 @@
 //on fait les require ici
 require_once(__DIR__ . '/controller/ingredientController.php');
 require_once(__DIR__ . '/controller/drinkController.php');
+require_once(__DIR__ . '/controller/dessertController.php');
+require_once(__DIR__ . '/controller/authController.php');
 
 header('Content-type: text/javascript');
 //getting information to do the router.
@@ -82,6 +84,59 @@ switch($url[3]){
         }
 
         break;
+
+    case "desserts":
+        switch ($method) {
+            case 'GET':
+                //give all the drinks from the db
+                echo getJSONofAllDesserts();
+                break;
+
+            case 'POST':
+                //
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        break;
+
+    case "dessert":
+        switch ($method){
+            case 'GET':
+
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo getJSONofOneDessert($id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /dessert/4 or another number.';
+                }
+
+                break;
+        }
+        break;
+
+    case "auth":
+        switch ($method){
+            case 'POST':
+
+                if($url[count($url) - 1] == "signup"){
+                    createANewUser($_POST);
+                } else if($url[count($url) - 1] == "login") {
+                    loginUser($_POST);
+                } else {
+
+                    echo 'Wrong parameters, should looks like /dessert/4 or another number.';
+                }
+
+                break;
+        }
+
+
+        break;
+
 };
 
 
