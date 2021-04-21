@@ -54,3 +54,21 @@ function getJSONofOneDrink($id){
 
     return json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
+
+function addDrink($post){
+    $name = $post['name'];
+    $price = $post['price'];
+    $url = "qsdsqdqsd";
+
+    $name = strtolower($name);
+    $price*=100;
+
+
+    if(!count_chars($name) > 1 || !is_numeric($price)){
+        //error.
+    } else {
+        postNewDrink($name, $price, $url);
+
+    }
+
+}

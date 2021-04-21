@@ -18,7 +18,8 @@ function loginUser($post){
     //  Récupération de l'utilisateur et de son pass hashé
     $mail = $post['mail'];
     $data = getAccount($mail);
-
+    $link = $post['link'];
+    $isAdmin = $data['admin'];
 
     // Comparaison du pass envoyé via le formulaire avec la base
     $isPasswordCorrect = password_verify($post['pwd'], $data['mdpClient']);
@@ -26,7 +27,12 @@ function loginUser($post){
     if (!$data)
     {
         //pas de data trouvé avec le mail
-        header('Location: /index.php?e=2');
+        if($link){
+            header('Location: /admin/login.php?e=2');
+        } else {
+            header('Location: /index.php?e=2');
+        }
+
     }
     else
     {
@@ -35,15 +41,47 @@ function loginUser($post){
             session_start();
             $_SESSION['id'] = $data['idClient'];
             $_SESSION['mail'] = $data['mailClient'];
+            $_SESSION['admin'] = $data['admin'];
 
-            header('Location: /index.php');
+
+
+            if($isAdmin){
+                header('Location: /admin/login.php');
+            } else {
+                header('Location: /index.php');
+            }
 
 
         }
         else {
             //mauvais mdp ou mail
-            header('Location: /index.php?e=3');
+            if($link){
+                header('Location: /admin/login.php?e=3');
+            } else {
+                header('Location: /index.php?e=3');
+            }
         }
+    }
+}
+
+function signOut(){
+    session_start();
+
+    if(isset($_SESSION['id'])){ // Si tu es connecté on te déconnecte et on te redirige vers une page.
+
+        // Supression des variables de session et de la session
+        $_SESSION = array();
+        session_destroy();
+
+        // Supression des cookies de connexion automatique
+
+
+        header('Location: /index.php?deco=1');
+
+    }else{ // Dans le cas contraire on t'empêche d'accéder à cette page en te redirigeant vers la page que tu veux.
+
+        header('Location: /index.php?e=5');
+
     }
 }
 

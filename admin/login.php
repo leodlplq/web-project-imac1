@@ -1,19 +1,10 @@
 <?php
 session_start();
-/*
-    description of the error.
 
-    e =
-        1 : adresse mail deja existante
-        2 : pas d'adresse mail dans la db
-        3 : couple mdp/mail mauvais
-        4 : accès a admin sans connexion
-        5 : tentative de déconnexion mais pas connecter
-*/
+if(isset($_SESSION['id']) && $_SESSION['admin'] == 1){
+    header('Location: /admin/admin.php');
+}
 ?>
-
-
-
 
 <!doctype html>
 <html lang="en">
@@ -22,17 +13,17 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EzPizza</title>
+    <title>EzPizza - Admin</title>
 </head>
 <body>
-
+ADMIN PART
 
 partie connexion :
 
 <form action="/back/router.php/auth/login" method="POST">
     <input type="text" name="mail"  placeholder="mail">
     <input type="password" name="pwd" placeholder="password">
-    <input type="hidden" value="0" name="link">
+    <input type="hidden" value="1" name="link">
 
     <input type="submit" value="se connecter">
 </form>
@@ -58,3 +49,4 @@ if(isset($_SESSION['id'])){
 ?>
 </body>
 </html>
+

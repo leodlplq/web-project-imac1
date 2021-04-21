@@ -18,3 +18,18 @@ function getOneDrink($id){
 
     return $query->fetchall();
 }
+
+function postNewDrink($name, $price, $url){
+
+    $pdo = connection();
+    $sql = "INSERT INTO boisson(nomBoisson, prixBoisson , urlImageBoisson ) VALUES(?,?,?)";
+    $query = $pdo->prepare($sql);
+    $query->execute([
+        $name,
+        $price,
+        $url
+    ]);
+
+    header('Location: /admin/admin.php');
+
+}

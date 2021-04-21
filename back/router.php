@@ -23,7 +23,7 @@ switch($url[3]){
                 break;
 
             case 'POST':
-                //
+                addIngredient($_POST);
                 break;
 
             default:
@@ -58,7 +58,7 @@ switch($url[3]){
                 break;
 
             case 'POST':
-                //
+                addDrink($_POST);
                 break;
 
             default:
@@ -93,7 +93,7 @@ switch($url[3]){
                 break;
 
             case 'POST':
-                //
+                addDessert($_POST);
                 break;
 
             default:
@@ -128,9 +128,17 @@ switch($url[3]){
                     loginUser($_POST);
                 } else {
 
-                    echo 'Wrong parameters, should looks like /dessert/4 or another number.';
+                    echo 'Wrong parameters';
                 }
 
+                break;
+
+            case 'GET':
+                if($url[count($url) - 1] == "signout"){
+                    signOut();
+                } else {
+                    echo "Wrong parameters";
+                }
                 break;
         }
 
