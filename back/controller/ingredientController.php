@@ -56,3 +56,25 @@ function getJSONofOneIngredient($id){
 
     return json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
+
+
+function addIngredient($post){
+    $name = $post['name'];
+    $type = $post['type'];
+    $price = $post['price'];
+    $url = "qsdsqdqsd";
+
+    $types = ['topping', 'sauce', 'dough'];
+
+    $name = strtolower($name);
+    $price*=100;
+
+
+    if(!count_chars($name) > 1 || !in_array($type, $types) || !is_numeric($price)){
+        //error.
+    } else {
+        postNewIngredient($name, $type, $price, $url);
+
+    }
+
+}
