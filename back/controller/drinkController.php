@@ -1,16 +1,18 @@
 <?php
 
 require_once(__DIR__ . '/../model/drinkModel.php');
+require_once(__DIR__ . '/../toolkit.php');
 
 function getJSONofAllDrinks(){
     $drinks = getAllDrinks();
     $i = 0;
     if(count($drinks) != 0){
         foreach ($drinks as $drink => $tab){
-            $json[$i] = [
+            $json["data"][$i] = [
                 'id'=>$tab["idBoisson"],
                 'name'=>$tab["nomBoisson"],
                 'price'=>$tab["prixBoisson"],
+                'url'=>$tab["urlImageBoisson"]
 
             ];
 
@@ -21,6 +23,7 @@ function getJSONofAllDrinks(){
         }
     } else {
         $json['text'] = "Nothing was found...";
+        $json['nb'] = 0;
         $json['error'] = 1;
     }
 
@@ -37,10 +40,11 @@ function getJSONofOneDrink($id){
 
     if(count($drink) != 0){
 
-        $json = [
+        $json["data"] = [
             'id'=>$drink[0]["idBoisson"],
             'name'=>$drink[0]["nomBoisson"],
             'price'=>$drink[0]["prixBoisson"],
+            'url'=>$drink[0]["urlImageBoisson"]
 
         ];
 
@@ -48,6 +52,7 @@ function getJSONofOneDrink($id){
         $json["nb"] = 1;
     } else {
         $json['text'] = "Nothing was found...";
+        $json["nb"] = 0;
         $json['error'] = 1;
     }
 
@@ -58,17 +63,73 @@ function getJSONofOneDrink($id){
 function addDrink($post){
     $name = $post['name'];
     $price = $post['price'];
-    $url = "qsdsqdqsd";
 
-    $name = strtolower($name);
-    $price*=100;
+    $uploaddir = get_absolute_path(__DIR__ . '/../../assets/images/upload/');
+
+    $temp = explode(".", $_FILES["image"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $uploaddir."/".$newfilename)) {
 
 
-    if(!count_chars($name) > 1 || !is_numeric($price)){
-        //error.
+        $name = strtolower($name);
+        $price*=100;
+
+
+        if(!count_chars($name) > 1 || !is_numeric($price)){
+            //header('Location:/admin/admin.php?e-add=1');
+            var_dump($_FILES);
+        } else {
+            return postNewDrink($name, $price, $newfilename);
+
+        }
     } else {
-        postNewDrink($name, $price, $url);
 
+        var_dump($_FILES);
+        //error due to image.
+        //header('Location:/admin/admin.php?e-image=1');
     }
 
+}
+
+function updateDrink($post, $id){
+
+    $name = strtolower($post['newName']);
+    $price = $post['newPrice'] * 100;
+    $changeImage =  $post['newImage'];
+    $urlImage = null;
+
+
+    if($changeImage == "true"){
+
+        $uploaddir = get_absolute_path(__DIR__ . '/../../assets/images/upload/');
+
+        $temp = explode(".", $_FILES["image"]["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $urlImage = $newfilename;
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $uploaddir."/".$newfilename)) {
+
+            if(!count_chars($name) > 1 || !is_numeric($price)){
+                //error.
+                header('Location:/admin/admin.php?e-form=1');
+            } else {
+                return changeDrinkInDB($name, $price, $urlImage, $id);
+
+            }
+        } else {
+
+
+            //error due to image.
+            header('Location:/admin/admin.php?e-image=1');
+        }
+    } else {
+        return changeDrinkInDB($name, $price, $urlImage, $id);
+    }
+
+}
+
+
+function deleteDrink($id){
+    return deleteDrinkFromDB($id);
 }

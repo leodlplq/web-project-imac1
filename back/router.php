@@ -23,7 +23,7 @@ switch($url[3]){
                 break;
 
             case 'POST':
-                addIngredient($_POST);
+                echo addIngredient($_POST);
                 break;
 
             default:
@@ -46,6 +46,26 @@ switch($url[3]){
                 }
 
                 break;
+
+            case 'POST':
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo updateIngredient($_POST, $id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /ingredient/4 or another number.';
+                }
+                break;
+
+            case 'DELETE':
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo deleteIngredient($id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /ingredient/4 or another number.';
+                }
+                break;
         }
 
         break;
@@ -58,7 +78,7 @@ switch($url[3]){
                 break;
 
             case 'POST':
-                addDrink($_POST);
+                echo addDrink($_POST);
                 break;
 
             default:
@@ -81,6 +101,26 @@ switch($url[3]){
                 }
 
                 break;
+
+            case 'POST':
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo updateDrink($_POST, $id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /drink/4 or another number.';
+                }
+                break;
+
+            case 'DELETE':
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo deleteDrink($id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /drink/4 or another number.';
+                }
+                break;
         }
 
         break;
@@ -93,7 +133,7 @@ switch($url[3]){
                 break;
 
             case 'POST':
-                addDessert($_POST);
+                echo addDessert($_POST);
                 break;
 
             default:
@@ -114,6 +154,26 @@ switch($url[3]){
                     echo 'Wrong parameters, should looks like /dessert/4 or another number.';
                 }
 
+                break;
+
+            case 'POST':
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo updateDessert($_POST, $id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /dessert/4 or another number.';
+                }
+                break;
+
+            case 'DELETE':
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo deleteDessert($id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /dessert/4 or another number.';
+                }
                 break;
         }
         break;

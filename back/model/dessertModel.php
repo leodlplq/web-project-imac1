@@ -34,6 +34,49 @@ function postNewDessert($name, $price, $url){
         $url
     ]);
 
-    header('Location: /admin/admin.php');
 
+    return getJSONofAllDesserts();
+    //header('Location: /admin/admin.php');
+
+}
+
+function changeDessertInDB($name, $price, $urlImage, $id){
+    $pdo = connection();
+
+    if($urlImage == null){
+        $sql = "UPDATE dessert SET nomDessert = ?, prixDessert = ? WHERE idDessert = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([
+            $name,
+            $price,
+            $id
+        ]);
+    } else {
+        $sql = "UPDATE dessert SET nomDessert = ? ,prixDessert = ?, urlImageDessert = ? WHERE idDessert = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([
+            $name,
+            $price,
+            $urlImage,
+            $id
+        ]);
+
+        //header('Location: /admin/admin.php');
+    }
+
+    //return getAllDesserts();
+    return getJSONofAllDesserts();
+}
+
+function deleteDessertFromDB($id){
+    $pdo = connection();
+    $sql = "DELETE FROM dessert WHERE idDessert = ?";
+    $query = $pdo->prepare($sql);
+    $query->execute([
+        $id
+    ]);
+
+    //return getAllDesserts();
+    //header('Location: /admin/admin.php');
+    return getJSONofAllDesserts();
 }
