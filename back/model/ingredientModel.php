@@ -31,6 +31,50 @@ function postNewIngredient($name, $type, $price, $url){
         $url
     ]);
 
-    header('Location: /admin/admin.php');
+    return getJSONofAllIngredients();
+    //header('Location: /admin/admin.php');
 
+}
+
+function changeIngredientInDB($name, $type, $price, $urlImage, $id){
+    $pdo = connection();
+
+    if($urlImage == null){
+        $sql = "UPDATE ingredients SET nomIngredient = ?, typeIngredient = ?, prixIngredient = ? WHERE idIngredient = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([
+            $name,
+            $type,
+            $price,
+            $id
+        ]);
+    } else {
+        $sql = "UPDATE ingredients SET nomIngredient = ? ,typeIngredient = ?,prixIngredient = ?, urlImageIngredient = ? WHERE idIngredient = ?";
+        $query = $pdo->prepare($sql);
+        $query->execute([
+            $name,
+            $type,
+            $price,
+            $urlImage,
+            $id
+        ]);
+
+
+        //header('Location: /admin/admin.php');
+    }
+
+    return getJSONofAllIngredients();
+
+}
+
+function deleteIngredientFromDB($id){
+    $pdo = connection();
+    $sql = "DELETE FROM ingredients WHERE idIngredient = ?";
+    $query = $pdo->prepare($sql);
+    $query->execute([
+        $id
+    ]);
+
+    return getJSONofAllIngredients();
+    //header('Location: /admin/admin.php');
 }
