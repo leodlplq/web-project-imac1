@@ -1,3 +1,5 @@
+
+
 let _formUpdateIngredient = document.querySelector('.updateIngredientForm');
 
 function displayAdmin(data, element){
@@ -58,7 +60,7 @@ function displayAdmin(data, element){
                     el.addEventListener('click', (e)=>{
                         e.preventDefault();
                         let id = el.dataset.id;
-                        fetch(`${startingURL.origin}/back/router.php/drink/${id}`, {method : 'DELETE'})
+                        fetch(`${startingURL.origin}${root()}/back/router.php/drink/${id}`, {method : 'DELETE'})
                             .then(res => res.json())
                             .then(data => displayAdmin(data, 1))
                             .catch(error => { console.log(error) });
@@ -123,7 +125,7 @@ function displayAdmin(data, element){
                     el.addEventListener('click', (e)=>{
                         e.preventDefault();
                         let id = el.dataset.id;
-                        fetch(`${startingURL.origin}/back/router.php/dessert/${id}`, {method : 'DELETE'})
+                        fetch(`${startingURL.origin}${root()}/back/router.php/dessert/${id}`, {method : 'DELETE'})
                             .then(res => res.json())
                             .then(data => displayAdmin(data, 2))
                             .catch(error => { console.log(error) });
@@ -228,7 +230,7 @@ function displayIngredientAdmin(data){
         el.addEventListener('click', (e)=>{
             e.preventDefault();
             let id = el.dataset.id;
-            fetch(`${startingURL.origin}/back/router.php/ingredient/${id}`, {method : 'DELETE'})
+            fetch(`${startingURL.origin}${root()}/back/router.php/ingredient/${id}`, {method : 'DELETE'})
                 .then(res => res.json())
                 .then(data => displayAdmin(data, 0))
                 .catch(error => { console.log(error) });

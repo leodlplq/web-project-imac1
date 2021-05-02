@@ -4,7 +4,7 @@
 function uploadNewDessert(){
     // Define processing URL and form element
     const startingURL = new URL(window.location.href);
-    const url = `${startingURL.origin}/back/router.php/desserts`
+    const url = `${startingURL.origin}${root()}/back/router.php/desserts`
     const form = document.querySelector('.formNewDessert')
 
     // Listen for form submit
@@ -43,7 +43,7 @@ function uploadNewDessert(){
 function updateDessert(id){
     // Define processing URL and form element
     const startingURL = new URL(window.location.href);
-    const url = `${startingURL.origin}/back/router.php/dessert/${id}`
+    const url = `${startingURL.origin}${root()}/back/router.php/dessert/${id}`
     const form = document.querySelector(`.updateDessertFormn${id} form`);
 
 

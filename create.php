@@ -69,6 +69,7 @@ if(isset($_SESSION['id'])){
 </div>
 
 
+<script src="/assets/js/root.js"></script>
 <script src="/assets/js/display/displayElements.js"></script>
 <script src="/assets/js/upload/uploadPizza.js"></script>
 <script src="/assets/js/script.js"></script>

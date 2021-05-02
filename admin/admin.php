@@ -92,7 +92,7 @@ if(!isset($_SESSION['id']) && $_SESSION['admin'] != 1){
 
 
 
-
+    <script src="/assets/js/root.js"></script>
     <script src="/assets/js/display/displayAdmin.js"></script>
     <script src="/assets/js/upload/uploadIngredient.js"></script>
     <script src="/assets/js/upload/uploadDrink.js"></script>

@@ -1,3 +1,4 @@
+
 // document ready in ES6
 // here we recreate the famous and wonderful document.ready offered by JQuery !!
 
@@ -17,21 +18,23 @@ const _drinkDiv = document.querySelector('.drink');
 
 const startingURL = new URL(window.location.href);
 
+
+
 document.ready( () => {
 
     uploadNewIngredient();
     uploadNewDrink();
     uploadNewDessert();
 
-    fetch(`${startingURL.origin}/back/router.php/ingredients`)
+    fetch(`${startingURL.origin}${root()}/back/router.php/ingredients`)
         .then(blob => blob.json())
         .then(res => displayIngredientAdmin(res));
 
-    fetch(`${startingURL.origin}/back/router.php/drinks`)
+    fetch(`${startingURL.origin}${root()}/back/router.php/drinks`)
         .then(blob => blob.json())
         .then(res => displayAdmin(res, 1));
 
-    fetch(`${startingURL.origin}/back/router.php/desserts`)
+    fetch(`${startingURL.origin}${root()}/back/router.php/desserts`)
         .then(blob => blob.json())
         .then(res => displayAdmin(res, 2));
 });

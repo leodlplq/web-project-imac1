@@ -1,10 +1,9 @@
 
 
-
 function uploadNewIngredient(){
     // Define processing URL and form element
     const startingURL = new URL(window.location.href);
-    const url = `${startingURL.origin}/back/router.php/ingredients`
+    const url = `${startingURL.origin}${root()}/back/router.php/ingredients`
     const form = document.querySelector('.formNewIngredient')
 
     // Listen for form submit
@@ -42,7 +41,7 @@ function uploadNewIngredient(){
 function updateIngredient(id){
     // Define processing URL and form element
     const startingURL = new URL(window.location.href);
-    const url = `${startingURL.origin}/back/router.php/ingredient/${id}`
+    const url = `${startingURL.origin}${root()}/back/router.php/ingredient/${id}`
     const form = document.querySelector(`.updateIngredientFormn${id} form`);
 
     console.log('ingredient', id);
