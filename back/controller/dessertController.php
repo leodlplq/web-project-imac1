@@ -79,7 +79,9 @@ function addDessert($post){
 
         if(!count_chars($name) > 1 || !is_numeric($price)){
             //error.
-            header('Location:/admin/admin.php?e-form=1');
+            $url = root()."/admin/admin.php?e-form=1";
+            header("Location: $url");
+
         } else {
             return postNewDessert($name, $price, $newfilename);
 
@@ -88,7 +90,9 @@ function addDessert($post){
 
 
         //error due to image.
-        header('Location:/admin/admin.php?e-image=1');
+        $url = root()."/admin/admin.php?e-image=1";
+        header("Location: $url");
+
     }
 
 
@@ -116,7 +120,9 @@ function updateDessert($post, $id){
 
             if(!count_chars($name) > 1 || !is_numeric($price)){
                 //error.
-                header('Location:/admin/admin.php?e-form=1');
+                $url = root()."/admin/admin.php?e-form=1";
+                header("Location: $url");
+
             } else {
                 return changeDessertInDB($name, $price, $urlImage, $id);
 
@@ -125,7 +131,9 @@ function updateDessert($post, $id){
 
 
             //error due to image.
-            header('Location:/admin/admin.php?e-image=1');
+            $url = root()."/admin/admin.php?e-image=1";
+            header("Location: $url");
+
         }
     } else {
         return changeDessertInDB($name, $price, $urlImage, $id);

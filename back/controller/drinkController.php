@@ -77,8 +77,9 @@ function addDrink($post){
 
 
         if(!count_chars($name) > 1 || !is_numeric($price)){
-            //header('Location:/admin/admin.php?e-add=1');
-            var_dump($_FILES);
+            //header('Location:');
+            $url = root()."/admin/admin.php?e-add=1";
+            header("Location: $url");
         } else {
             return postNewDrink($name, $price, $newfilename);
 
@@ -112,7 +113,9 @@ function updateDrink($post, $id){
 
             if(!count_chars($name) > 1 || !is_numeric($price)){
                 //error.
-                header('Location:/admin/admin.php?e-form=1');
+                $url = root()."/admin/admin.php?e-form=1";
+                header("Location: $url");
+
             } else {
                 return changeDrinkInDB($name, $price, $urlImage, $id);
 
@@ -121,7 +124,9 @@ function updateDrink($post, $id){
 
 
             //error due to image.
-            header('Location:/admin/admin.php?e-image=1');
+            $url = root()."/admin/admin.php?e-image=1";
+            header("Location: $url");
+
         }
     } else {
         return changeDrinkInDB($name, $price, $urlImage, $id);

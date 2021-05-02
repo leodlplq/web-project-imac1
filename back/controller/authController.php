@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/../model/authModel.php');
+require_once(__DIR__ . '/../root.php');
 
 //function called when a new user is created
 function createANewUser($post){
@@ -29,9 +30,11 @@ function loginUser($post){
     {
         //pas de data trouvé avec le mail
         if($link){
-            header('Location: /admin/login.php?e=2');
+            $url = root()."/admin/login.php?e=2";
+            header("Location: $url");
         } else {
-            header('Location: /index.php?e=2');
+            $url = root()."/index.php?e=2";
+            header("Location: $url");
         }
 
     }
@@ -47,9 +50,13 @@ function loginUser($post){
 
 
             if($isAdmin){
-                header('Location: /admin/login.php');
+                $url = root()."/admin/login.php";
+                header("Location: $url");
+
             } else {
-                header('Location: /index.php');
+                $url = root()."/index.php";
+                header("Location: $url");
+
             }
 
 
@@ -57,9 +64,13 @@ function loginUser($post){
         else {
             //mauvais mdp ou mail
             if($link){
-                header('Location: /admin/login.php?e=3');
+                $url = root()."/admin/login.php?e=3";
+                header("Location: $url");
+
             } else {
-                header('Location: /index.php?e=3');
+                $url = root()."/index.php?e=3";
+                header("Location: $url");
+
             }
         }
     }
@@ -76,13 +87,15 @@ function signOut(){
 
         // Supression des cookies de connexion automatique
 
+        $url = root()."/index.php?deco=1";
+        header("Location: $url");
 
-        header('Location: /index.php?deco=1');
 
     }else{ // Dans le cas contraire on t'empêche d'accéder à cette page en te redirigeant vers la page que tu veux.
 
-        header('Location: /index.php?e=5');
-
+        $url = root()."/index.php?e=5";
+        header("Location: $url");
+        
     }
 }
 
