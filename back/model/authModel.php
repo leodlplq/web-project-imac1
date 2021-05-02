@@ -21,13 +21,17 @@ function createAccount($nom, $prenom ,$password_hash, $mail){
         ]);
 
         //TODO : rediriger par la suite vers la page login directement.
-        header('Location: /index.php');
+        $url = root()."/index.php";
+        header("Location: $url");
+
 
     } catch(\PDOException $e) {
         echo $e->getCode();
         echo $e->getMessage();
         if($e->getCode() == 23000){ // duplicata du champ mail
-            header('Location: /index.php?e=1');
+            $url = root()."/index.php?e=1";
+            header("Location: $url");
+
         }
 
     }

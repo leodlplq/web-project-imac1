@@ -120,7 +120,9 @@ function addIngredient($post){
         }
     } else {
         //error due to image.
-        header('Location:/admin/admin.php?e-image=1');
+        $url = root()."/admin/admin.php?e-image=1";
+        header("Location: $url");
+
     }
 
 
@@ -147,7 +149,9 @@ function updateIngredient($post, $id){
 
             if(!count_chars($name) > 1 || !is_numeric($price)){
                 //error.
-                //header('Location:/admin/admin.php?e-form=1');
+                $url = root()."/admin/admin.php?e-form=1";
+                header("Location: $url");
+                //header('Location:');
             } else {
                 return changeIngredientInDB($name,$type,  $price, $urlImage, $id);
 
@@ -156,7 +160,8 @@ function updateIngredient($post, $id){
 
 
             //error due to image.
-
+            $url = root()."/admin/admin.php?e-image=1";
+            header("Location: $url");
             //header('Location:/admin/admin.php?e-image=1');
         }
     } else {
