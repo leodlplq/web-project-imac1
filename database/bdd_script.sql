@@ -8,11 +8,12 @@
 #------------------------------------------------------------
 
 CREATE TABLE CLIENT(
-        idClient     Int NOT NULL ,
+        idClient     Int NOT NULL AUTO_INCREMENT,
         nomClient    Char (80) NOT NULL ,
         prenomClient Char (80) NOT NULL ,
         mdpClient    Char (80) NOT NULL ,
-        mailClient   Char (80) NOT NULL
+        mailClient   Char (80) NOT NULL ,
+        admin        bool NOT NULL DEFAULT 0
 	,CONSTRAINT CLIENT_PK PRIMARY KEY (idClient)
 )ENGINE=InnoDB;
 
@@ -22,7 +23,7 @@ CREATE TABLE CLIENT(
 #------------------------------------------------------------
 
 CREATE TABLE COMMANDE(
-        idCommande   Int NOT NULL ,
+        idCommande   BIGINT NOT NULL ,
         dateCommande Date NOT NULL ,
         idClient     Int NOT NULL
 	,CONSTRAINT COMMANDE_PK PRIMARY KEY (idCommande)
@@ -36,10 +37,11 @@ CREATE TABLE COMMANDE(
 #------------------------------------------------------------
 
 CREATE TABLE INGREDIENTS(
-        idIngredient   Int NOT NULL ,
+        idIngredient   Int NOT NULL AUTO_INCREMENT,
         nomIngredient  Char (80) NOT NULL ,
         typeIngredient Char (80) NOT NULL ,
-        prixIngredient Int NOT NULL
+        prixIngredient Int NOT NULL,
+        urlImageIngredient Char(80) NOT NULL
 	,CONSTRAINT INGREDIENTS_PK PRIMARY KEY (idIngredient)
 )ENGINE=InnoDB;
 
@@ -49,7 +51,7 @@ CREATE TABLE INGREDIENTS(
 #------------------------------------------------------------
 
 CREATE TABLE PIZZA(
-        idPizza  Int NOT NULL ,
+        idPizza  BIGINT NOT NULL ,
         nomPizza Char (80) ,
         existe   Bool NOT NULL
 	,CONSTRAINT PIZZA_PK PRIMARY KEY (idPizza)
@@ -61,9 +63,10 @@ CREATE TABLE PIZZA(
 #------------------------------------------------------------
 
 CREATE TABLE DESSERT(
-        idDessert   Int NOT NULL ,
+        idDessert   Int NOT NULL AUTO_INCREMENT,
         nomDessert  Char (80) NOT NULL ,
-        prixDessert Int NOT NULL
+        prixDessert Int NOT NULL,
+        urlImageDessert Char(80) NOT NULL
 	,CONSTRAINT DESSERT_PK PRIMARY KEY (idDessert)
 )ENGINE=InnoDB;
 
@@ -73,9 +76,10 @@ CREATE TABLE DESSERT(
 #------------------------------------------------------------
 
 CREATE TABLE BOISSON(
-        idBoisson   Int NOT NULL ,
+        idBoisson   Int NOT NULL AUTO_INCREMENT,
         nomBoisson  Char (80) NOT NULL ,
-        prixBoisson Int NOT NULL
+        prixBoisson Int NOT NULL,
+        urlImageBoisson Char(80) NOT NULL
 	,CONSTRAINT BOISSON_PK PRIMARY KEY (idBoisson)
 )ENGINE=InnoDB;
 
@@ -85,7 +89,7 @@ CREATE TABLE BOISSON(
 #------------------------------------------------------------
 
 CREATE TABLE INGREDIENT_PIZZA(
-        idPizza      Int NOT NULL ,
+        idPizza      BIGINT NOT NULL ,
         idIngredient Int NOT NULL ,
         nbIngredient Int NOT NULL
 	,CONSTRAINT INGREDIENT_PIZZA_PK PRIMARY KEY (idPizza,idIngredient)
@@ -100,8 +104,8 @@ CREATE TABLE INGREDIENT_PIZZA(
 #------------------------------------------------------------
 
 CREATE TABLE CONTIENT_PIZZA(
-        idCommande Int NOT NULL ,
-        idPizza    Int NOT NULL ,
+        idCommande BIGINT NOT NULL ,
+        idPizza    BIGINT NOT NULL ,
         nbPizza    Int NOT NULL
 	,CONSTRAINT CONTIENT_PIZZA_PK PRIMARY KEY (idCommande,idPizza)
 
@@ -115,7 +119,7 @@ CREATE TABLE CONTIENT_PIZZA(
 #------------------------------------------------------------
 
 CREATE TABLE CONTIENT_BOISSON(
-        idCommande Int NOT NULL ,
+        idCommande BIGINT NOT NULL ,
         idBoisson  Int NOT NULL ,
         nbBoisson  Int NOT NULL
 	,CONSTRAINT CONTIENT_BOISSON_PK PRIMARY KEY (idCommande,idBoisson)
@@ -130,7 +134,7 @@ CREATE TABLE CONTIENT_BOISSON(
 #------------------------------------------------------------
 
 CREATE TABLE CONTIENT_DESSERT(
-        idCommande Int NOT NULL ,
+        idCommande BIGINT NOT NULL ,
         idDessert  Int NOT NULL ,
         nbDessert  Int NOT NULL
 	,CONSTRAINT CONTIENT_DESSERT_PK PRIMARY KEY (idCommande,idDessert)

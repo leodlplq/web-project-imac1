@@ -25,7 +25,7 @@ document.ready( () => {
 
     fetch(`${startingURL.origin}/back/router.php/ingredients`)
         .then(blob => blob.json())
-        .then(res => displayAdmin(res, 0));
+        .then(res => displayIngredientAdmin(res));
 
     fetch(`${startingURL.origin}/back/router.php/drinks`)
         .then(blob => blob.json())

@@ -5,6 +5,7 @@ require_once(__DIR__ . '/../model/authModel.php');
 //function called when a new user is created
 function createANewUser($post){
 
+    var_dump($post);
     $password_hash = password_hash($post['pwd'], PASSWORD_DEFAULT);
     $nom = $post['nom'];
     $prenom = $post['prenom'];
