@@ -45,9 +45,12 @@ function updateIngredient(id){
     const url = `${startingURL.origin}/back/router.php/ingredient/${id}`
     const form = document.querySelector(`.updateIngredientFormn${id} form`);
 
+    console.log('ingredient', id);
     // Listen for form submit
     form.addEventListener('submit', (e) => {
+
         e.preventDefault()
+        console.log('heurr?')
 
         // Gather files and begin FormData
         let image = document.querySelector(`#newFileIngredientn${id}`).files[0];
@@ -75,7 +78,7 @@ function updateIngredient(id){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => displayAdmin(data,0));
+            .then(data => displayIngredientAdmin(data));
 
     })
 }

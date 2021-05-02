@@ -4,6 +4,7 @@ require_once(__DIR__ . '/controller/ingredientController.php');
 require_once(__DIR__ . '/controller/drinkController.php');
 require_once(__DIR__ . '/controller/dessertController.php');
 require_once(__DIR__ . '/controller/authController.php');
+require_once(__DIR__ . '/controller/pizzaController.php');
 
 header('Content-type: text/javascript');
 //getting information to do the router.
@@ -16,20 +17,45 @@ switch($url[3]){
 
     case 'ingredients':
 
-        switch ($method) {
-            case 'GET':
-                //give all the ingredients from the db
-                echo getJSONofAllIngredients();
-                break;
+        if(isset($url[4])){
+            switch ($url[4]){
+                case "dough":
+                    echo getJSONofDough();
+                    break;
 
-            case 'POST':
-                echo addIngredient($_POST);
-                break;
+                case "sauce":
+                    echo getJSONofSauce();
+                    break;
 
-            default:
-                # code...
-                break;
+                case "topping":
+                    echo getJSONofTopping();
+                    break;
+
+                default:
+
+                    break;
+            }
+        } else {
+            switch ($method) {
+                case 'GET':
+                    //give all the ingredients from the db
+                    echo getJSONofAllIngredients();
+                    break;
+
+                case 'POST':
+                    echo addIngredient($_POST);
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
         }
+
+
+
+
+
         break;
 
     case "ingredient":
@@ -204,6 +230,82 @@ switch($url[3]){
 
 
         break;
+
+
+    case "pizzas":
+
+        if(isset($url[4])){
+            switch ($url[4]){
+                case 'unique':
+                    switch ($method){
+                        case 'POST':
+                            //
+                            break;
+
+                        case 'GET':
+                            echo getJSONofAllUniquePizza();
+                            break;
+
+                    }
+                    break;
+
+                case 'existing':
+                    switch ($method){
+                        case 'POST':
+                            //
+                            break;
+
+                        case 'GET':
+                            echo getJSONofAllExistingPizza();
+                            break;
+
+                    }
+                    break;
+
+                default:
+
+                    break;
+
+            }
+        } else {
+            switch ($method){
+                case 'POST':
+                    echo addPizza($_POST);
+                    break;
+
+                case 'GET':
+                    echo getJSONofAllPizza();
+                    break;
+
+            }
+        }
+
+
+
+
+        break;
+
+    case "pizza":
+        switch ($method){
+            case 'POST':
+
+                //
+
+                break;
+
+            case 'GET':
+
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo getJSONofPizza($id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /pizza/4 or another number.';
+                }
+                break;
+
+        }
+
 
 };
 

@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 /*
     description of the error.
 
@@ -51,10 +53,17 @@ partie création :
 
 <?php
 
+
+
 if(isset($_SESSION['id'])){
     $mail = $_SESSION['mail'];
     echo "salut $mail";
+    echo "<a href='/back/router.php/auth/signout'>Déconnecter</a>";
+
+    echo "<a href='create.php'>Create</a>";
 }
 ?>
+
+
 </body>
 </html>

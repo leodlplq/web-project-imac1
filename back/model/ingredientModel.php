@@ -78,3 +78,43 @@ function deleteIngredientFromDB($id){
     return getJSONofAllIngredients();
     //header('Location: /admin/admin.php');
 }
+
+function getIngredientOfPizza($id){
+    $pdo = connection();
+    $sql = "SELECT * FROM ingredients AS i
+            JOIN ingredient_pizza AS ip ON ip.idIngredient = i.idIngredient 
+            WHERE ip.idPizza = ?";
+    $query = $pdo->prepare($sql);
+    $query->execute([
+        $id
+    ]);
+
+    return $query->fetchall();
+}
+
+function getDoughIngredients(){
+    $pdo = connection();
+    $sql = "SELECT * FROM ingredients WHERE typeIngredient = 'dough'";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+
+    return $query->fetchall();
+}
+
+function getSauceIngredients(){
+    $pdo = connection();
+    $sql = "SELECT * FROM ingredients WHERE typeIngredient = 'sauce'";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+
+    return $query->fetchall();
+}
+
+function getToppingIngredients(){
+    $pdo = connection();
+    $sql = "SELECT * FROM ingredients WHERE typeIngredient = 'topping'";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+
+    return $query->fetchall();
+}
