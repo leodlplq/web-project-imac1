@@ -31,7 +31,7 @@ session_start();
 
 partie connexion :
 
-<form action="/back/router.php/auth/login" method="POST">
+<form action="back/router.php/auth/login" method="POST">
     <input type="text" name="mail"  placeholder="mail">
     <input type="password" name="pwd" placeholder="password">
     <input type="hidden" value="0" name="link">
@@ -41,7 +41,7 @@ partie connexion :
 
 partie création :
 
-<form action="/back/router.php/auth/signup" method="POST">
+<form action="back/router.php/auth/signup" method="POST">
 
     <input type="text" name="prenom" placeholder="prenom">
     <input type="text" name="nom" placeholder="nom">
@@ -58,7 +58,7 @@ partie création :
 if(isset($_SESSION['id'])){
     $mail = $_SESSION['mail'];
     echo "salut $mail";
-    echo "<a href='/back/router.php/auth/signout'>Déconnecter</a>";
+    echo "<a href='back/router.php/auth/signout'>Déconnecter</a>";
 
     echo "<a href='create.php'>Create</a>";
 }

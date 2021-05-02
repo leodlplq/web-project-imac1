@@ -1,6 +1,8 @@
+
+
 function uploadPizza(){
     const startingURL = new URL(window.location.href);
-    const url = `${startingURL.origin}/back/router.php/pizzas`
+    const url = `${startingURL.origin}${root()}/back/router.php/pizzas`
     const form = document.querySelector('.pizzaForm');
 
     form.addEventListener('submit', (e)=>{
