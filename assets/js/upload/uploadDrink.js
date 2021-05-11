@@ -34,7 +34,7 @@ function uploadNewDrink(){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => displayAdmin(data, 1));
+            .then(data => displayDrinkAdmin(data, 1));
 
     })
 }
@@ -78,7 +78,7 @@ function updateDrink(id){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => displayAdmin(data,1));
+            .then(data => displayDrinkAdmin(data,1));
 
     })
 }

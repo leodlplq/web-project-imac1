@@ -11,7 +11,7 @@ function createAccount($nom, $prenom ,$password_hash, $mail){
     try {
         echo "test";
         $pdo = connection();
-        $sql = "INSERT INTO client(nomClient, prenomClient, mdpClient, mailClient) VALUES(?,?,?,?)";
+        $sql = "INSERT INTO CLIENT(nomClient, prenomClient, mdpClient, mailClient) VALUES(?,?,?,?)";
         $query = $pdo->prepare($sql);
         $query->execute([
             $nom,
@@ -21,7 +21,7 @@ function createAccount($nom, $prenom ,$password_hash, $mail){
         ]);
 
         //TODO : rediriger par la suite vers la page login directement.
-        $url = root()."/index.php";
+        $url = root()."/login.php";
         header("Location: $url");
 
 
@@ -29,7 +29,7 @@ function createAccount($nom, $prenom ,$password_hash, $mail){
         echo $e->getCode();
         echo $e->getMessage();
         if($e->getCode() == 23000){ // duplicata du champ mail
-            $url = root()."/index.php?e=1";
+            $url = root()."/singup.php?e=1";
             header("Location: $url");
 
         }
@@ -40,7 +40,7 @@ function createAccount($nom, $prenom ,$password_hash, $mail){
 
 function getAccount($mail){
     $pdo = connection();
-    $sql = 'SELECT * FROM client WHERE mailClient = ?';
+    $sql = 'SELECT * FROM CLIENT WHERE mailClient = ?';
     $query = $pdo->prepare($sql);
     $query->execute([$mail]);
 

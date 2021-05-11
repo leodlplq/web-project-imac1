@@ -4,7 +4,7 @@ require_once(__DIR__ . '/connection.php');
 
 function getAllPizzas(){
     $pdo = connection();
-    $sql = "SELECT * FROM pizza";
+    $sql = "SELECT * FROM PIZZA";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -13,7 +13,7 @@ function getAllPizzas(){
 
 function getOnePizza($id){
     $pdo = connection();
-    $sql = "SELECT * FROM pizza WHERE idPizza = ?";
+    $sql = "SELECT * FROM PIZZA WHERE idPizza = ?";
     $query = $pdo->prepare($sql);
     $query->execute([$id]);
 
@@ -22,7 +22,7 @@ function getOnePizza($id){
 
 function getAllExistingPizzas(){
     $pdo = connection();
-    $sql = "SELECT * FROM pizza WHERE existe = 1";
+    $sql = "SELECT * FROM PIZZA WHERE existe = 1";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -31,7 +31,7 @@ function getAllExistingPizzas(){
 
 function getAllUniquePizzas(){
     $pdo = connection();
-    $sql = "SELECT * FROM pizza WHERE existe = 0";
+    $sql = "SELECT * FROM PIZZA WHERE existe = 0";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -41,7 +41,7 @@ function getAllUniquePizzas(){
 function postNewUniquePizza($id, $name){
 
     $pdo = connection();
-    $sql = "INSERT INTO pizza(idPizza, nomPizza, existe) VALUES(?,?,?)";
+    $sql = "INSERT INTO PIZZA(idPizza, nomPizza, existe) VALUES(?,?,?)";
     $query = $pdo->prepare($sql);
     $query->execute([
         $id,
@@ -52,7 +52,7 @@ function postNewUniquePizza($id, $name){
 
 function postNewIngredientOnPizza($idPizza, $idIngredient){
     $pdo = connection();
-    $sql = "INSERT INTO ingredient_pizza(idPizza, idIngredient, nbIngredient) VALUES(?,?,?)";
+    $sql = "INSERT INTO INGREDIENT_PIZZA(idPizza, idIngredient, nbIngredient) VALUES(?,?,?)";
     $query = $pdo->prepare($sql);
     $query->execute([
         $idPizza,
@@ -65,11 +65,24 @@ function postNewIngredientOnPizza($idPizza, $idIngredient){
 
 function deleteIngredientOnPizza($idIngredient){
     $pdo = connection();
-    $sql = "DELETE FROM ingredient_pizza WHERE idIngredient = ?";
+    $sql = "DELETE FROM INGREDIENT_PIZZA WHERE idIngredient = ?";
     $query = $pdo->prepare($sql);
     $query->execute([
         $idIngredient
     ]);
 
+}
+
+function getPizzaInOrder($id){
+    $pdo = connection();
+    $sql = "SELECT * FROM PIZZA AS p 
+            JOIN CONTIENT_PIZZA AS cp ON cp.idPizza = p.idPizza
+            WHERE cp.idCommande = ?";
+    $query = $pdo->prepare($sql);
+    $query->execute([
+        $id
+    ]);
+
+    return $query->fetchAll();
 }
 

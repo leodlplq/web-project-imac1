@@ -1,8 +1,7 @@
 <?php
 session_start();
-
-if(!isset($_SESSION['id']) && $_SESSION['admin'] != 1){
-    header('Location: /admin/login.php?e=4');
+if(isset($_SESSION['id']) && $_SESSION['admin'] == 0){
+    header('Location:/index.php');
 }
 ?>
 
@@ -13,82 +12,84 @@ if(!isset($_SESSION['id']) && $_SESSION['admin'] != 1){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>EzPizza</title>
 </head>
 <body>
-    Hello <?php  echo $_SESSION['mail']?>
 
-
-    <a href="/back/router.php/auth/signout">Déconnecter</a>
 
     <!---  LES FORMULAIRES SERONT SUREMENT A FAIRE EN JS, ON VERRA --->
-<br>
-    FORM INGREDIENT
-    <form method="POST" enctype="multipart/form-data" class="formNewIngredient">
+    <section class="allAdmin">
+        <a href='/back/router.php/auth/signout' class='btn-signout'><img src='/assets/images/icons/log-out.svg'></a>
 
-        <input type="text" name="name" placeholder="name" id="nameNewIngredient">
-        
-        <select name="type" id="typeNewIngredient">
-            <option value="topping">Topping</option>
-            <option value="sauce">Sauce</option>
-            <option value="dough">Dough</option>
-        </select>
+        <section class="forms">
 
-        <input type="number" step="0.01" name="price" id="priceNewIngredient">
+            <h1 class="titleForm">ADD AN INGREDIENT</h1>
+            <form method="POST" enctype="multipart/form-data" class="formNewIngredient">
 
-        <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-        Envoyez ce fichier : <input name="image" type="file" id="fileNewIngredient"/>
+                <input type="text" name="name" placeholder="name" id="nameNewIngredient">
 
-        <input type="submit" value="Valider">
-    </form>
+                <select name="type" id="typeNewIngredient">
+                    <option value="topping">Topping</option>
+                    <option value="sauce">Sauce</option>
+                    <option value="dough">Dough</option>
+                </select>
 
+                <input type="number" step="0.01" name="price" id="priceNewIngredient" placeholder="price">
+                <label for="fileNewIngredient"><img src="/assets/images/icons/log-out.svg">Ajouter une image</label>
+                <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
+                <input name="image" type="file" id="fileNewIngredient" class="hide"/>
 
-    <br><br><br>
-    FORM DRINKS
-    <form method="POST" enctype="multipart/form-data" class="formNewDrink">
-        <input type="text" name="name" placeholder="name drink" id="nameNewDrink">
-
-        <input type="number" step="0.01" name="price" id="priceNewDrink">
-
-        <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-        Envoyez ce fichier : <input name="image" type="file" id="fileNewDrink"/>
-
-        <input type="submit" value="Valider">
-    </form>
-
-    <br><br><br>
-    FORM DESSERT
-    <form method="POST" enctype="multipart/form-data" class="formNewDessert">
-        <input type="text" name="name" placeholder="name dessert" id="nameNewDessert">
-
-        <input type="number" step="0.01" name="price" id="priceNewDessert">
-
-        <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-        Envoyez ce fichier : <input name="image" type="file" id="fileNewDessert"/>
-
-        <input type="submit" value="Valider">
-    </form>
+                <input type="submit" value="Valider">
+            </form>
 
 
 
+            <h1 class="titleForm">ADD A DRINK</h1>
+            <form method="POST" enctype="multipart/form-data" class="formNewDrink">
+                <input type="text" name="name" placeholder="name drink" id="nameNewDrink">
 
-    <br><br><br>
-    INGREDIENT
-    <div class="ingredient">
-    </div>
-    <br><br><br>
+                <input type="number" step="0.01" name="price" id="priceNewDrink">
 
-    BOISSON
-    <div class="drink">
-    </div>
-    <br><br><br>
+                <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
+                <label for="fileNewDrink"><img src="/assets/images/icons/log-out.svg">Ajouter une image</label>
+                <input name="image" type="file" id="fileNewDrink"/>
+
+                <input type="submit" value="Valider">
+            </form>
+
+            <h1 class="titleForm">ADD A DESSERT</h1>
+            <form method="POST" enctype="multipart/form-data" class="formNewDessert">
+                <input type="text" name="name" placeholder="name dessert" id="nameNewDessert">
+
+                <input type="number" step="0.01" name="price" id="priceNewDessert">
+
+                <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
+                <label for="fileNewDessert"><img src="/assets/images/icons/log-out.svg">Ajouter une image</label>
+                <input name="image" type="file" id="fileNewDessert"/>
+
+                <input type="submit" value="Valider">
+            </form>
+        </section>
+        <section class="allElements">
+            <h1 class="titleAdmin">INGREDIENTS</h1>
+            <div class="ingredient_admin">
+            </div>
 
 
-    DESSERT
-    <div class="dessert">
-    </div>
+            <h1 class="titleAdmin">DRINKS</h1>
+            <div class="drink_admin">
+            </div>
+
+
+
+            <h1 class="titleAdmin">DESSERTS</h1>
+            <div class="dessert_admin">
+            </div>
+        </section>
+    </section>
+
 
 
 

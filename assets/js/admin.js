@@ -12,9 +12,9 @@ Document.prototype.ready = callback => {
     }
 };
 
-const _ingredientDiv = document.querySelector('.ingredient');
-const _dessertDiv = document.querySelector('.dessert');
-const _drinkDiv = document.querySelector('.drink');
+const _ingredientDiv = document.querySelector('.ingredient_admin');
+const _dessertDiv = document.querySelector('.dessert_admin');
+const _drinkDiv = document.querySelector('.drink_admin');
 
 const startingURL = new URL(window.location.href);
 
@@ -32,11 +32,11 @@ document.ready( () => {
 
     fetch(`${startingURL.origin}${root()}/back/router.php/drinks`)
         .then(blob => blob.json())
-        .then(res => displayAdmin(res, 1));
+        .then(res => displayDrinkAdmin(res));
 
     fetch(`${startingURL.origin}${root()}/back/router.php/desserts`)
         .then(blob => blob.json())
-        .then(res => displayAdmin(res, 2));
+        .then(res => displayDessertAdmin(res));
 });
 
 

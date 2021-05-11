@@ -145,3 +145,32 @@ function updateDessert($post, $id){
 function deleteDessert($id){
     return deleteDessertFromDB($id);
 }
+
+function getTabofDessertInOrder($id){
+    $desserts = getDessertOfOrder($id);
+    $i = 0;
+
+    if(count($desserts) != 0){
+        $json['price'] = 0;
+        foreach ($desserts as $dessert => $tab){
+            $json["data"][$i] = [
+                'id'=>$tab["idDessert"],
+                'name'=>$tab["nomDessert"],
+                'price'=>intval($tab["prixDessert"]),
+                'url'=>$tab["urlImageDessert"]
+
+            ];
+
+            $i++;
+
+            $json['error'] = 0;
+            $json['nb'] = $i;
+            $json['price'] += intval($tab["prixDessert"]);
+        }
+    } else {
+        $json['text'] = "Nothing was found...";
+        $json['error'] = 1;
+        $json['nb'] = 0;
+    }
+    return $json;
+}

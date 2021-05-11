@@ -132,6 +132,7 @@ function getJSONofPizza($id){
         $json['error'] = 0;
         $json['nb'] = $i;
 
+
     } else {
         $json['text'] = "Nothing was found...";
         $json['error'] = 1;
@@ -141,16 +142,9 @@ function getJSONofPizza($id){
 
 }
 
-function addPizza($post){
-    $idPizza = $_SESSION['id'] . time() . rand(0,1000); // We create a unique ID for each pizza created // using id of user, date, random number.
-
-    $doughId = intval($post['dough']);
-    $sauceId = intval($post['sauce']);
-    $toppingId = explode(",", $post['topping']);
-    $name = strtolower($post['name']);
+function addPizza($idPizza, $doughId, $sauceId, $toppingId, $name){
 
     postNewUniquePizza($idPizza, $name);
-
     postNewIngredientOnPizza($idPizza, $doughId);
     postNewIngredientOnPizza($idPizza, $sauceId);
 
@@ -158,6 +152,39 @@ function addPizza($post){
     foreach ($toppingId as $value) {
         postNewIngredientOnPizza($idPizza, $value);
     }
+}
 
-    return getJSONofPizza($idPizza);
+function getTabOfPizzaInOrder($id){
+    $pizzas = getPizzaInOrder($id);
+    $i = 0;
+
+    if(count($pizzas) != 0){
+        $json['price'] = 0;
+        foreach ($pizzas as $pizza => $tab){
+
+            $ingredients = getJSONofIngredientOnPizza($tab["idPizza"]);
+
+            $json["data"][$i] = [
+                'id'=>$tab["idPizza"],
+                'name'=>$tab["nomPizza"],
+                'existingOne'=>$tab["existe"],
+                'ingredients'=>$ingredients["ingredient"],
+                'price'=>$ingredients['price']
+
+            ];
+
+            $i++;
+
+            $json['error'] = 0;
+            $json['nb'] = $i;
+            $json['price'] += $ingredients['price'];
+        }
+    } else {
+        $json['text'] = "Nothing was found...";
+        $json['error'] = 1;
+        $json['nb'] = 0;
+    }
+
+    return $json;
+
 }

@@ -5,20 +5,29 @@ require_once(__DIR__ . '/controller/drinkController.php');
 require_once(__DIR__ . '/controller/dessertController.php');
 require_once(__DIR__ . '/controller/authController.php');
 require_once(__DIR__ . '/controller/pizzaController.php');
+require_once(__DIR__ . '/controller/orderController.php');
+
+require_once (__DIR__. './root.php');
 
 header('Content-type: text/javascript');
 //getting information to do the router.
 $method = $_SERVER['REQUEST_METHOD'];
 $url = explode('/', $_SERVER['REQUEST_URI']);
 
-//var_dump($url); //some testing.
 
-switch($url[3]){
+
+$urlAdding = count(explode("/", root())) - 1;
+$nbUrl = 3 + $urlAdding;
+
+//var_dump($url); //some testing.
+//var_dump($nbUrl); //some testing.
+
+switch($url[$nbUrl]){
 
     case 'ingredients':
 
-        if(isset($url[4])){
-            switch ($url[4]){
+        if(isset($url[$nbUrl+1])){
+            switch ($url[$nbUrl+1]){
                 case "dough":
                     echo getJSONofDough();
                     break;
@@ -234,8 +243,8 @@ switch($url[3]){
 
     case "pizzas":
 
-        if(isset($url[4])){
-            switch ($url[4]){
+        if(isset($url[$nbUrl+1])){
+            switch ($url[$nbUrl+1]){
                 case 'unique':
                     switch ($method){
                         case 'POST':
@@ -305,6 +314,92 @@ switch($url[3]){
                 break;
 
         }
+        break;
+
+    case "orders":
+
+        if(isset($url[$nbUrl+1])){
+            switch ($url[$nbUrl+1]){
+                case 'pizza':
+                    switch ($method){
+                        case 'POST':
+                            addPizzaInOrder($_POST);
+                            break;
+
+                        case 'GET':
+                            //echo getJSONofAllUniquePizza();
+                            break;
+
+                    }
+                    break;
+
+                case 'dessert':
+                    switch ($method){
+                        case 'POST':
+                            addDessertInOrder($_POST);
+                            break;
+
+                        case 'GET':
+                            //echo getJSONofAllExistingPizza();
+                            break;
+
+                    }
+                    break;
+
+                case 'drink':
+                    switch ($method){
+                        case 'POST':
+                            addDrinkInOrder($_POST);
+                            break;
+
+                        case 'GET':
+                            //echo getJSONofAllExistingPizza();
+                            break;
+
+                    }
+                    break;
+
+                default:
+
+                    break;
+
+            }
+        } else {
+            switch ($method){
+                case 'POST':
+                    echo addEverythingInOrder($_POST);
+                    break;
+
+                case 'GET':
+                    echo getJSONofAllOrder();
+                    break;
+
+            }
+        }
+
+        break;
+
+    case "order":
+        switch ($method){
+            case 'POST':
+
+                //
+
+                break;
+
+            case 'GET':
+
+                if(is_numeric($url[count($url) - 1])){
+                    $id = intval($url[count($url) - 1]);
+                    echo getJSONofOrder($id);
+
+                } else {
+                    echo 'Wrong parameters, should looks like /order/4 or another number.';
+                }
+                break;
+
+        }
+        break;
 
 
 };
