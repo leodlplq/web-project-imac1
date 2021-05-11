@@ -5,8 +5,6 @@ require_once(__DIR__ . '/../root.php');
 
 //function called when a new user is created
 function createANewUser($post){
-
-    var_dump($post);
     $password_hash = password_hash($post['pwd'], PASSWORD_DEFAULT);
     $nom = $post['nom'];
     $prenom = $post['prenom'];
@@ -43,14 +41,16 @@ function loginUser($post){
         if ($isPasswordCorrect) {
             //on se connecte c'est ok
             session_start();
-            $_SESSION['id'] = $data['idClient'];
+            $_SESSION['id'] = intval($data['idClient']);
             $_SESSION['mail'] = $data['mailClient'];
-            $_SESSION['admin'] = $data['admin'];
+            $_SESSION['admin'] = intval($data['admin']);
+            $_SESSION['firstname'] = $data['prenomClient'];
+            $_SESSION['lastname'] = $data['nomClient'];
 
 
 
             if($isAdmin){
-                $url = root()."/admin/login.php";
+                $url = root()."/admin/admin.php";
                 header("Location: $url");
 
             } else {

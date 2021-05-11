@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if(isset($_SESSION['id'])){
+    header("Location:index.php");
+}
 
 /*
     description of the error.
@@ -13,10 +15,6 @@ session_start();
         5 : tentative de déconnexion mais pas connecter
 */
 ?>
-
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,26 +22,27 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>EzPizza</title>
 </head>
 <body>
 
-<a href="login.php">Log in</a>
-<a href="signup.php">Sign up</a>
+<div class="login">
+    <h1 class="title_login">log in</h1>
 
-<?php
+    <form action="back/router.php/auth/login" method="POST" class="login_form">
+        <input type="text" name="mail"  placeholder="mail">
+        <input type="password" name="pwd" placeholder="password">
+        <input type="hidden" value="0" name="link">
 
+        <input type="submit" value="se connecter">
+    </form>
+</div>
 
-
-if(isset($_SESSION['id'])){
-    $mail = $_SESSION['mail'];
-    echo "salut $mail";
-    echo "<a href='back/router.php/auth/signout'>Déconnecter</a>";
-
-    echo "<a href='create.php'>Create</a>";
-}
-?>
 
 
 </body>
 </html>
+

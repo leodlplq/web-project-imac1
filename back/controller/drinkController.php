@@ -138,3 +138,32 @@ function updateDrink($post, $id){
 function deleteDrink($id){
     return deleteDrinkFromDB($id);
 }
+
+function getTabofDrinkInOrder($id){
+    $drinks = getDrinkOfOrder($id);
+    $i = 0;
+
+    if(count($drinks) != 0){
+        $json['price'] = 0;
+        foreach ($drinks as $drink => $tab){
+            $json["data"][$i] = [
+                'id'=>$tab["idBoisson"],
+                'name'=>$tab["nomBoisson"],
+                'price'=>intval($tab["prixBoisson"]),
+                'url'=>$tab["urlImageBoisson"]
+
+            ];
+
+            $i++;
+
+            $json['error'] = 0;
+            $json['nb'] = $i;
+            $json['price'] += intval($tab["prixBoisson"]);
+        }
+    } else {
+        $json['text'] = "Nothing was found...";
+        $json['error'] = 1;
+        $json['nb'] = 0;
+    }
+    return $json;
+}

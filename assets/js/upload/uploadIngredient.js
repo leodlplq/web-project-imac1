@@ -32,7 +32,7 @@ function uploadNewIngredient(){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => displayAdmin(data, 0));
+            .then(data => displayIngredientAdmin(data, 0));
 
     })
 }

@@ -3,7 +3,7 @@ require_once(__DIR__ . '/connection.php');
 
 function getAllIngredients(){
     $pdo = connection();
-    $sql = "SELECT * FROM ingredients";
+    $sql = "SELECT * FROM INGREDIENTS";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -12,7 +12,7 @@ function getAllIngredients(){
 
 function getOneIngredient($id){
     $pdo = connection();
-    $sql = "SELECT * FROM ingredients WHERE idIngredient = ?";
+    $sql = "SELECT * FROM INGREDIENTS WHERE idIngredient = ?";
     $query = $pdo->prepare($sql);
     $query->execute([$id]);
 
@@ -22,7 +22,7 @@ function getOneIngredient($id){
 function postNewIngredient($name, $type, $price, $url){
 
     $pdo = connection();
-    $sql = "INSERT INTO ingredients(nomIngredient, typeIngredient, prixIngredient , urlImageIngredient ) VALUES(?,?,?,?)";
+    $sql = "INSERT INTO INGREDIENTS(nomIngredient, typeIngredient, prixIngredient , urlImageIngredient ) VALUES(?,?,?,?)";
     $query = $pdo->prepare($sql);
     $query->execute([
         $name,
@@ -40,7 +40,7 @@ function changeIngredientInDB($name, $type, $price, $urlImage, $id){
     $pdo = connection();
 
     if($urlImage == null){
-        $sql = "UPDATE ingredients SET nomIngredient = ?, typeIngredient = ?, prixIngredient = ? WHERE idIngredient = ?";
+        $sql = "UPDATE INGREDIENTS SET nomIngredient = ?, typeIngredient = ?, prixIngredient = ? WHERE idIngredient = ?";
         $query = $pdo->prepare($sql);
         $query->execute([
             $name,
@@ -49,7 +49,7 @@ function changeIngredientInDB($name, $type, $price, $urlImage, $id){
             $id
         ]);
     } else {
-        $sql = "UPDATE ingredients SET nomIngredient = ? ,typeIngredient = ?,prixIngredient = ?, urlImageIngredient = ? WHERE idIngredient = ?";
+        $sql = "UPDATE INGREDIENTS SET nomIngredient = ? ,typeIngredient = ?,prixIngredient = ?, urlImageIngredient = ? WHERE idIngredient = ?";
         $query = $pdo->prepare($sql);
         $query->execute([
             $name,
@@ -69,7 +69,7 @@ function changeIngredientInDB($name, $type, $price, $urlImage, $id){
 
 function deleteIngredientFromDB($id){
     $pdo = connection();
-    $sql = "DELETE FROM ingredients WHERE idIngredient = ?";
+    $sql = "DELETE FROM INGREDIENTS WHERE idIngredient = ?";
     $query = $pdo->prepare($sql);
     $query->execute([
         $id
@@ -81,8 +81,8 @@ function deleteIngredientFromDB($id){
 
 function getIngredientOfPizza($id){
     $pdo = connection();
-    $sql = "SELECT * FROM ingredients AS i
-            JOIN ingredient_pizza AS ip ON ip.idIngredient = i.idIngredient 
+    $sql = "SELECT * FROM INGREDIENTS AS i
+            JOIN INGREDIENT_PIZZA AS ip ON ip.idIngredient = i.idIngredient 
             WHERE ip.idPizza = ?";
     $query = $pdo->prepare($sql);
     $query->execute([
@@ -94,7 +94,7 @@ function getIngredientOfPizza($id){
 
 function getDoughIngredients(){
     $pdo = connection();
-    $sql = "SELECT * FROM ingredients WHERE typeIngredient = 'dough'";
+    $sql = "SELECT * FROM INGREDIENTS WHERE typeIngredient = 'dough'";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -103,7 +103,7 @@ function getDoughIngredients(){
 
 function getSauceIngredients(){
     $pdo = connection();
-    $sql = "SELECT * FROM ingredients WHERE typeIngredient = 'sauce'";
+    $sql = "SELECT * FROM INGREDIENTS WHERE typeIngredient = 'sauce'";
     $query = $pdo->prepare($sql);
     $query->execute();
 
@@ -112,7 +112,7 @@ function getSauceIngredients(){
 
 function getToppingIngredients(){
     $pdo = connection();
-    $sql = "SELECT * FROM ingredients WHERE typeIngredient = 'topping'";
+    $sql = "SELECT * FROM INGREDIENTS WHERE typeIngredient = 'topping'";
     $query = $pdo->prepare($sql);
     $query->execute();
 

@@ -1,3 +1,337 @@
+/** FONT PART **/
+
+@font-face {
+    font-family: "MADE Soulmaze";
+    src: url("../font/MADE Soulmaze PERSONAL USE.otf") format('truetype')
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+/** GENERAL PART **/
+
+*{
+    font-family: "Montserrat";
+    box-sizing: border-box;
+}
 .hide{
-    display: none;
+    display: none!important;
+}
+
+
+/** LOGIN / SIGNUP PART **/
+
+.login, .signup{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #FC3318 0%, #B00F0F 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title_login, .title_signup{
+    font-size: 144px;
+    font-family: "MADE Soulmaze";
+    color:white;
+    margin: 0;
+}
+
+.login_form, .signup_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login_form > input{
+    width: 600px;
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 11px;
+    margin-bottom: 25px;
+}
+
+.signup_form .inner_form{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.signup_form .right, .signup_form .left{
+    width: 48%;
+}
+
+.signup_form input{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 11px;
+    margin-bottom: 25px;
+}
+
+.login_form > input[type=submit], .signup_form input[type=submit]{
+    background-color: #1c1c1c;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 500px;
+}
+
+/** ADMIN PART **/
+
+.allAdmin{
+    width: 100%;
+    min-height : 100vh;
+    background: linear-gradient(to bottom, #FC3318 0%, #B00F0F 100%);
+    display: flex;
+    padding-bottom: 150px;
+}
+
+.forms{
+    background-color: #1c1c1c;
+    width: 33%;
+    height: 100%;
+    position: fixed;
+    padding: 50px;
+    color: white;
+    overflow-y: scroll;
+}
+
+.forms > form{
+    display: flex;
+    flex-direction: column;
+    background: cadetblue;
+}
+
+.forms > form > input{
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 11px;
+    margin-bottom: 25px;
+}
+
+.forms > form > select{
+    margin-bottom: 20px;
+}
+
+.titleForm, .titleAdmin{
+    margin: 0;
+    font-family: "MADE Soulmaze";
+    color: white;
+}
+
+.titleAdmin{
+    margin: 50px 0px 0px 50px ;
+}
+
+.allElements{
+    width: 100%;
+    color: white;
+    padding-left: 33%;
+    height: 100%;
+}
+
+.ingredient_admin, .drink_admin, .dessert_admin{
+    padding: 50px 50px 0px 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+}
+
+.element{
+    flex-basis: 20%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.infoElementAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.nameAdmin{
+    text-transform: uppercase;
+}
+
+.btnUpdateModify{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.update, .delete{
+    width: 100%;
+    padding :10px;
+    background-color: #32a854;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-radius: 11px;
+    margin-top: 10px;
+
+}
+
+.delete{
+    background-color: #a832a2;
+}
+
+.updateForm{
+    position: absolute;
+    width: 100%;
+    background: aliceblue;
+}
+
+.updateForm > form{
+
+}
+
+/** CREATE PART **/
+
+.create{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #FC3318 0%, #B00F0F 100%);
+    padding-bottom: 150px;
+
+}
+
+.ingredients{
+    height: 100%;
+    padding: 50px 0;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.title_create{
+    text-align: center;
+    font-size: 60px;
+    font-family: "MADE Soulmaze";
+    color:white;
+    margin: 50px 0px 50px 0px;
+}
+
+.subtitle_create{
+    font-size: 40px;
+    font-family: "MADE Soulmaze";
+    color:white;
+}
+
+.doughContainer, .sauceContainer, .toppingContainer, .drinkContainer, .dessertContainer{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+    color: white;
+}
+
+.toppingElement, .sauceElement, .doughElement, .drinkElement, .dessertElement{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pizza{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dough, .sauce, .topping{
+    width: 100%;
+}
+
+.imgElement{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgElement img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.titleElement{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.priceElement{
+    font-weight: bold;
+}
+
+#pizzaNameInput{
+    margin: 50px 0;
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 11px;
+    margin-bottom: 25px;
+}
+
+.title_dessert, .title_drink{
+    font-family: "MADE Soulmaze";
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+
+
+}
+
+.btn-prev-next{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.next-btn, .prev-btn{
+    font-family: "MADE Soulmaze";
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0px 10px;
+}
+.validation-order{
+    margin: 50px 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-submit{
+    background-color: #1c1c1c;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 11px;
+    margin-bottom: 25px;
+
+}
+
+.btn-signout img{
+    position: absolute;
+    height: 50px;
+    top: 50px;
+    right: 50px;
 }

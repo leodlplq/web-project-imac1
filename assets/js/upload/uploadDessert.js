@@ -34,7 +34,7 @@ function uploadNewDessert(){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => displayAdmin(data, 2));
+            .then(data => displayDessertAdmin(data));
 
     })
 }
@@ -76,7 +76,7 @@ function updateDessert(id){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => displayAdmin(data,2));
+            .then(data => displayDessertAdmin(data));
 
     })
 }
