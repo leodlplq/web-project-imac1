@@ -1,13 +1,13 @@
 <?php
 //on fait les require ici
-require_once(__DIR__ . '/controller/ingredientController.php');
-require_once(__DIR__ . '/controller/drinkController.php');
-require_once(__DIR__ . '/controller/dessertController.php');
-require_once(__DIR__ . '/controller/authController.php');
-require_once(__DIR__ . '/controller/pizzaController.php');
-require_once(__DIR__ . '/controller/orderController.php');
+require_once(realpath(__DIR__) . '/controller/ingredientController.php');
+require_once(realpath(__DIR__) . '/controller/drinkController.php');
+require_once(realpath(__DIR__) . '/controller/dessertController.php');
+require_once(realpath(__DIR__) . '/controller/authController.php');
+require_once(realpath(__DIR__) . '/controller/pizzaController.php');
+require_once(realpath(__DIR__) . '/controller/orderController.php');
 
-require_once (__DIR__. './root.php');
+require_once (realpath(__DIR__). './root.php');
 
 header('Content-type: text/javascript');
 //getting information to do the router.

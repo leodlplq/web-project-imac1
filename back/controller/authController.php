@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__ . '/../model/authModel.php');
-require_once(__DIR__ . '/../root.php');
+require_once(realpath(realpath(__DIR__)) . '/../model/authModel.php');
+require_once(realpath(realpath(__DIR__)) . '/../root.php');
 
 //function called when a new user is created
 function createANewUser($post){

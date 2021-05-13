@@ -1,7 +1,7 @@
 <?php
 
 
-require_once(__DIR__ . '/connection.php');
+require_once(realpath(__DIR__) . '/connection.php');
 
 function getAllDesserts()
 {

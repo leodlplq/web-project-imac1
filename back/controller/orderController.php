@@ -1,9 +1,9 @@
 <?php
 
-require_once(__DIR__ . '/../model/orderModel.php');
-require_once (__DIR__. '/pizzaController.php');
-require_once (__DIR__. '/dessertController.php');
-require_once (__DIR__. '/drinkController.php');
+require_once(realpath(__DIR__) . '/../model/orderModel.php');
+require_once (realpath(__DIR__). '/pizzaController.php');
+require_once (realpath(__DIR__). '/dessertController.php');
+require_once (realpath(__DIR__). '/drinkController.php');
 
 function getJSONofAllOrder(){
     $orders = getAllOrder();

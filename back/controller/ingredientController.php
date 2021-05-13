@@ -1,8 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/../model/ingredientModel.php');
-require_once(__DIR__ . '/../model/pizzaModel.php');
-require_once(__DIR__ . '/../toolkit.php');
+require_once(realpath(__DIR__) . '/../model/ingredientModel.php');
+require_once(realpath(__DIR__) . '/../model/pizzaModel.php');
+require_once(realpath(__DIR__) . '/../toolkit.php');
 
 function getJSONofAllIngredients(){
     $ingredients = getAllIngredients();
@@ -98,7 +98,7 @@ function addIngredient($post){
     $price = $post['price'];
 
     $types = ['topping', 'sauce', 'dough'];
-    $uploaddir = get_absolute_path(__DIR__ . '/../../assets/images/upload/');
+    $uploaddir = get_absolute_path(realpath(__DIR__) . '/../../assets/images/upload/');
 
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
@@ -138,7 +138,7 @@ function updateIngredient($post, $id){
     //var_dump($changeImage);
     if($changeImage == "true"){
 
-        $uploaddir = get_absolute_path(__DIR__ . '/../../assets/images/upload/');
+        $uploaddir = get_absolute_path(realpath(__DIR__) . '/../../assets/images/upload/');
 
         $temp = explode(".", $_FILES["image"]["name"]);
         $newfilename = round(microtime(true)) . '.' . end($temp);
