@@ -64,7 +64,7 @@ function addDrink($post){
     $name = $post['name'];
     $price = $post['price'];
 
-    $uploaddir = get_absolute_path(realpath(__DIR__) . '/../../assets/images/upload/');
+    $uploaddir = realpath(__DIR__) . '/../../assets/images/upload/';
 
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
@@ -103,7 +103,7 @@ function updateDrink($post, $id){
 
     if($changeImage == "true"){
 
-        $uploaddir = get_absolute_path(realpath(__DIR__) . '/../../assets/images/upload/');
+        $uploaddir =realpath(__DIR__) . '/../../assets/images/upload/';
 
         $temp = explode(".", $_FILES["image"]["name"]);
         $newfilename = round(microtime(true)) . '.' . end($temp);
