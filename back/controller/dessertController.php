@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../model/dessertModel.php');
+require_once(realpath(__DIR__) . '/../model/dessertModel.php');
 
 function getJSONofAllDesserts(){
     $desserts = getAllDesserts();
@@ -65,7 +65,7 @@ function addDessert($post){
     $name = strtolower($name);
     $price*=100;
 
-    $uploaddir = get_absolute_path(__DIR__ . '/../../assets/images/upload/');
+    $uploaddir = realpath(__DIR__) . '/../../assets/images/upload/';
 
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
@@ -110,7 +110,7 @@ function updateDessert($post, $id){
 
     if($changeImage == "true"){
 
-        $uploaddir = get_absolute_path(__DIR__ . '/../../assets/images/upload/');
+        $uploaddir = realpath(__DIR__) . '/../../assets/images/upload/';
 
         $temp = explode(".", $_FILES["image"]["name"]);
         $newfilename = round(microtime(true)) . '.' . end($temp);

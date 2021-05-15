@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once(__DIR__ . '/../model/pizzaModel.php');
-require_once(__DIR__ . '/ingredientController.php');
-require_once(__DIR__ . '/../toolkit.php');
+require_once(realpath(__DIR__) . '/../model/pizzaModel.php');
+require_once(realpath(__DIR__) . '/ingredientController.php');
+require_once(realpath(__DIR__) . '/../toolkit.php');
 
 function getJSONofAllPizza(){
     $pizzas = getAllPizzas();
