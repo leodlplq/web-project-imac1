@@ -1,3 +1,5 @@
+const _divChoice = document.querySelector('.ingredients');
+
 function uploadOrder(){
     const startingURL = new URL(window.location.href);
     const url = `${startingURL.origin}${root()}/back/router.php/orders`
@@ -78,7 +80,11 @@ function uploadOrder(){
 
         fetch(url, input)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                _divChoice.classList.add('hide');
+                console.log(data)
+                displayOrder(data);
+            })
 
     });
 

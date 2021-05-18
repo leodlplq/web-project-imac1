@@ -103,22 +103,31 @@
     overflow-y: scroll;
 }
 
+.forms > .formNewIngredient{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: space-around;
+    height: 250px;
+}
+
 .forms > form{
     display: flex;
     flex-direction: column;
-    background: cadetblue;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
 }
 
-.forms > form > input{
+.forms > form > input, .forms > form > select{
+    width: 100%;
     padding: 15px;
     outline: none;
     border: none;
     border-radius: 11px;
-    margin-bottom: 25px;
-}
-
-.forms > form > select{
-    margin-bottom: 20px;
+    /*margin-bottom: 25px;*/
 }
 
 .titleForm, .titleAdmin{
@@ -184,7 +193,7 @@
 }
 
 .delete{
-    background-color: #a832a2;
+    background-color: #a832a2!important;
 }
 
 .updateForm{
@@ -193,7 +202,14 @@
     background: aliceblue;
 }
 
-.updateForm > form{
+.img-import{
+    height: 20px;
+    margin-right: 10px;
+}
+
+.label-import{
+    display: flex;
+    align-items: center;
 
 }
 
@@ -335,3 +351,213 @@
     top: 50px;
     right: 50px;
 }
+
+
+/* INDEX STYLE */
+
+.row {
+    display: flex;
+    height: 100vh;
+}
+
+.conteneur {
+    width: 100%;
+}
+
+#menu_calque_login{
+    z-index: 2;
+    position: absolute;
+    top: 25px;
+    right:100px;
+    font-family: 'Montserrat';
+}
+
+.contenu_menu_login ul{
+    list-style: none;
+}
+
+.contenu_menu_login ul{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+
+.contenu_menu_login li{
+    margin-right: 20px;
+}
+.ligne_accueil_ez_pizza {
+    justify-content:space-around;
+}
+
+.accueil_ez_pizza {
+    width: 50%;
+    position: relative;
+    height:100%;
+    transition: 0.5s ease;
+}
+
+.accueil_ez_pizza div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.accueil_ez_pizza div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.accueil_ez_pizza span{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    font-size: 80px;
+    transition: 0.4s;
+}
+
+.accueil_ez_pizza a:hover p{
+    opacity: 1;
+}
+
+.accueil_ez_pizza i{
+    font-style: normal;
+}
+
+.accueil_ez_pizza.left:hover {
+    width: 75%;
+}
+
+.accueil_ez_pizza.left:hover .right {
+    width: 25%;
+}
+
+.accueil_ez_pizza.right:hover {
+    width: 75%;
+}
+
+.accueil_ez_pizza.right:hover .left {
+    width: 25%;
+}
+
+
+.accueil_ez_pizza span:hover {
+    background-color: red;
+    font-size: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.contenu_menu_login a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 11px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+.contenu_menu_login a:hover, a:active {
+    background-color: red;
+
+}
+
+.accueil_ez_pizza .logo {
+    width:150px;
+    height:150px;
+    position:absolute;
+    z-index: 2;
+    right:-75px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+/* ORDER RECAP STYLE */
+
+
+.orderRecap{
+    width: 80%;
+    margin: 0 auto;
+    padding: 100px 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orderAll{
+    width: 100%;
+}
+
+.titleOrder{
+    font-family: "MADE Soulmaze";
+    text-align: center;
+    font-size: 50px;
+}
+
+.titlePizzaOrder, .titleDessertOrder, .titleDrinkOrder, .totalPrice{
+    font-family: "MADE Soulmaze";
+    font-size: 30px;
+}
+
+.ingredientsOfPizza, .dessertOrder, .drinkOrder{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+}
+
+.ingredientOnPizza,.dessertInOrder, .drinkInOrder {
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ingredientOnPizza > div, .dessertInOrder > div, .drinkInOrder > div{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+
+}
+
+.ingredientOnPizza > div > img, .dessertInOrder > div > img, .drinkInOrder > div > img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.ingredientOnPizza > span, .dessertInOrder > span, .drinkInOrder > span{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-order{
+    background: #1c1c1c!important;
+    padding : 15px 40px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+
+
+

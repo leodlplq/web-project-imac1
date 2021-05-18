@@ -147,13 +147,21 @@ function addPizzaInOrder($idOrder, $idPizza){
 
 function addDessertInOrder($idOrder, $dessertId){
     foreach ($dessertId as $value) {
-        postNewDessertOrder($idOrder, $value);
+
+        if(is_numeric($value)){
+            postNewDessertOrder($idOrder, $value);
+        }
+
     }
 }
 
 function addDrinkInOrder($idOrder, $drinkId){
     foreach ($drinkId as $value) {
-        postNewDrinkOrder($idOrder, $value);
+
+        if(is_numeric($value)){
+            postNewDrinkOrder($idOrder, $value);
+        }
+
     }
 }
 

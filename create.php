@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['id'])){
-    header('Location:index.php');
+    header('Location:login.php');
 }
 /*
     description of the error.
@@ -26,6 +26,7 @@ if(!isset($_SESSION['id'])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/assets/images/logo.ico" />
     <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>EzPizza</title>
@@ -109,9 +110,20 @@ if(!isset($_SESSION['id'])){
 
         </form>
     </div>
+
+    <div class="orderRecap">
+
+
+
+
+    </div>
 </section>
 
+
+
 <script src="/assets/js/root.js"></script>
+
+<script src="/assets/js/display/displayOrder.js"></script>
 <script src="/assets/js/display/displayElements.js"></script>
 <script src="/assets/js/upload/uploadOrder.js"></script>
 <script src="/assets/js/script.js"></script>

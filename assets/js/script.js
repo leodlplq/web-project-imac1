@@ -27,7 +27,6 @@ const _btnPrev2 = document.querySelector('#prevBtn2');
 
 
 
-
 document.ready( () => {
 
     fetch(`${startingURL.origin}${root()}/back/router.php/ingredients/dough`)

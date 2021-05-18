@@ -12,6 +12,7 @@ if(isset($_SESSION['id']) && $_SESSION['admin'] == 0){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="/assets/images/logo.ico" />
     <link rel="stylesheet" href="/assets/css/normalize.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <title>EzPizza</title>
@@ -28,7 +29,7 @@ if(isset($_SESSION['id']) && $_SESSION['admin'] == 0){
             <h1 class="titleForm">ADD AN INGREDIENT</h1>
             <form method="POST" enctype="multipart/form-data" class="formNewIngredient">
 
-                <input type="text" name="name" placeholder="name" id="nameNewIngredient">
+                <input type="text" name="name" placeholder="Name of the ingredient" id="nameNewIngredient">
 
                 <select name="type" id="typeNewIngredient">
                     <option value="topping">Topping</option>
@@ -36,8 +37,8 @@ if(isset($_SESSION['id']) && $_SESSION['admin'] == 0){
                     <option value="dough">Dough</option>
                 </select>
 
-                <input type="number" step="0.01" name="price" id="priceNewIngredient" placeholder="price">
-                <label for="fileNewIngredient"><img src="/assets/images/icons/log-out.svg">Ajouter une image</label>
+                <input type="number" step="0.01" name="price" id="priceNewIngredient" placeholder="Price of the ingredient">
+                <label for="fileNewIngredient" class="label-import"><img src="/assets/images/icons/log-out.svg" class="img-import">Ajouter une image</label>
                 <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
                 <input name="image" type="file" id="fileNewIngredient" class="hide"/>
 
@@ -48,26 +49,26 @@ if(isset($_SESSION['id']) && $_SESSION['admin'] == 0){
 
             <h1 class="titleForm">ADD A DRINK</h1>
             <form method="POST" enctype="multipart/form-data" class="formNewDrink">
-                <input type="text" name="name" placeholder="name drink" id="nameNewDrink">
+                <input type="text" name="name" placeholder="Name of the drink" id="nameNewDrink">
 
-                <input type="number" step="0.01" name="price" id="priceNewDrink">
+                <input type="number" step="0.01" name="price" id="priceNewDrink" placeholder="Price of the drink">
 
                 <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-                <label for="fileNewDrink"><img src="/assets/images/icons/log-out.svg">Ajouter une image</label>
-                <input name="image" type="file" id="fileNewDrink"/>
+                <label for="fileNewDrink" class="label-import"><img src="/assets/images/icons/log-out.svg" class="img-import">Ajouter une image</label>
+                <input name="image" type="file" id="fileNewDrink" class="hide"/>
 
                 <input type="submit" value="Valider">
             </form>
 
             <h1 class="titleForm">ADD A DESSERT</h1>
             <form method="POST" enctype="multipart/form-data" class="formNewDessert">
-                <input type="text" name="name" placeholder="name dessert" id="nameNewDessert">
+                <input type="text" name="name" placeholder="Name of the dessert" id="nameNewDessert">
 
-                <input type="number" step="0.01" name="price" id="priceNewDessert">
+                <input type="number" step="0.01" name="price" id="priceNewDessert" placeholder="Price of the dessert">
 
                 <!-- Le nom de l'élément input détermine le nom dans le tableau $_FILES -->
-                <label for="fileNewDessert"><img src="/assets/images/icons/log-out.svg">Ajouter une image</label>
-                <input name="image" type="file" id="fileNewDessert"/>
+                <label for="fileNewDessert" class="label-import"><img src="/assets/images/icons/log-out.svg" class="img-import">Ajouter une image</label>
+                <input name="image" type="file" id="fileNewDessert" class="hide"/>
 
                 <input type="submit" value="Valider">
             </form>

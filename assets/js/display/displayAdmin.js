@@ -40,7 +40,9 @@ function displayDessertAdmin(data){
              </div>
                     `;
 
-            updateDessert(el.id);
+            setTimeout(()=>{
+                updateDessert(el.id);
+            }, 1)
         });
 
         let _updateBtnDessert = document.querySelectorAll(".updateDessert");
@@ -111,7 +113,9 @@ function displayDrinkAdmin(data){
              </div>
                     `;
 
-            updateDrink(el.id);
+            setTimeout(()=>{
+                updateDrink(el.id);
+            }, 1)
         });
 
         let _updateBtnDrink = document.querySelectorAll(".updateDrink");
