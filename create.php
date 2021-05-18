@@ -32,7 +32,9 @@ if(!isset($_SESSION['id'])){
     <title>EzPizza</title>
 </head>
 <body>
-
+<a href="index.php" class="logoEzpizza">
+    <img src="/assets/images/logo.png" alt="Discover our pizza">
+</a>
 
 
 <section class="create">
