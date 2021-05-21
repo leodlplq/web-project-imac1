@@ -8,53 +8,64 @@ require_once (realpath(__DIR__). '/drinkController.php');
 function getJSONofAllOrder(){
     $orders = getAllOrder();
     $i = 0;
-    foreach ($orders as $order => $tab){
-        $dessert = getTabofDessertInOrder($tab['idCommande']);
-        $drink = getTabofDrinkInOrder($tab['idCommande']);
-        $pizza = getTabOfPizzaInOrder($tab['idCommande']);
-        $dessertAdding = Array();
-        $drinkAdding = Array();
-        $pizzaAdding = Array();
-        $priceOrder = 0;
-        //var_dump($dessert);
+    $json['nb'] = 0;
+    if(count($orders) != 0){
+        foreach ($orders as $order => $tab){
+            $dessert = getTabofDessertInOrder($tab['idCommande']);
+            $drink = getTabofDrinkInOrder($tab['idCommande']);
+            $pizza = getTabOfPizzaInOrder($tab['idCommande']);
+            $dessertAdding = Array();
+            $drinkAdding = Array();
+            $pizzaAdding = Array();
+            $priceOrder = 0;
+            //var_dump($dessert);
 
-        if($dessert['error'] == 0){
-            $dessertAdding["dessert"] = $dessert['data'];
-            $dessertAdding['price'] = $dessert['price'];
-            $priceOrder += $dessert['price'];
-        } else {
-            $dessertAdding = $dessert['text'];
+            if($dessert['error'] == 0){
+                $dessertAdding["dessert"] = $dessert['data'];
+                $dessertAdding['price'] = $dessert['price'];
+                $priceOrder += $dessert['price'];
+            } else {
+                $dessertAdding = $dessert['text'];
+            }
+
+            //var_dump($dessertAdding);
+
+            if($drink['error'] == 0){
+                $drinkAdding["drink"] = $drink['data'];
+                $drinkAdding['price'] = $drink['price'];
+                $priceOrder += $drink['price'];
+            } else {
+                $drinkAdding = $drink['text'];
+            }
+
+            if($pizza['error'] == 0){
+                $pizzaAdding['pizza'] = $pizza['data'];
+                $pizzaAdding['price'] = $pizza['price'];
+                $priceOrder += $pizza['price'];
+            } else {
+                $pizzaAdding = $pizza['text'];
+            }
+
+            $json['data'][$i] = [
+                'id' => $tab['idCommande'],
+                'pizzas' => $pizzaAdding,
+                'desserts' => $dessertAdding,
+                'drinks' => $drinkAdding,
+                'idUser' => $tab['idCommande'],
+                'price'=> $priceOrder
+            ];
+            $json['error'] = 1;
+            $json['nb'] += 1;
+            $i++;
         }
-
-        //var_dump($dessertAdding);
-
-        if($drink['error'] == 0){
-            $drinkAdding["drink"] = $drink['data'];
-            $drinkAdding['price'] = $drink['price'];
-            $priceOrder += $drink['price'];
-        } else {
-            $drinkAdding = $drink['text'];
-        }
-
-        if($pizza['error'] == 0){
-            $pizzaAdding['pizza'] = $pizza['data'];
-            $pizzaAdding['price'] = $pizza['price'];
-            $priceOrder += $pizza['price'];
-        } else {
-            $pizzaAdding = $pizza['text'];
-        }
-
-        $json['data'][$i] = [
-            'id' => $tab['idCommande'],
-            'pizzas' => $pizzaAdding,
-            'desserts' => $dessertAdding,
-            'drinks' => $drinkAdding,
-            'idUser' => $tab['idCommande'],
-            'price'=> $priceOrder
-        ];
+    } else {
+        $json['text'] = "Nothing was found...";
+        $json['error'] = 1;
+        $json['nb'] = 0;
 
         $i++;
     }
+
     return json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
 
@@ -107,6 +118,8 @@ function getJSONofOrder($id){
             'idUser' => $order[0]['idCommande'],
             'price'=> $priceOrder
         ];
+
+
 
 
 

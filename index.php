@@ -77,12 +77,7 @@ session_start();
     </div>
 </nav>
 
-<?php
-
-
-
-
-?>
+<script src="/assets/js/main.js"></script>
 
 
 </body>
