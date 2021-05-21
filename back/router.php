@@ -7,7 +7,7 @@ require_once(realpath(__DIR__) . '/controller/authController.php');
 require_once(realpath(__DIR__) . '/controller/pizzaController.php');
 require_once(realpath(__DIR__) . '/controller/orderController.php');
 
-require_once (realpath(__DIR__). './root.php');
+require_once (realpath(__DIR__). '/root.php');
 
 header('Content-type: text/javascript');
 //getting information to do the router.

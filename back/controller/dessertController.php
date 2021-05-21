@@ -65,7 +65,7 @@ function addDessert($post){
     $name = strtolower($name);
     $price*=100;
 
-    $uploaddir = realpath(__DIR__) . '/../../assets/images/upload/';
+    $uploaddir = realpath(__DIR__) . '/../../assets/images/upload';
 
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);

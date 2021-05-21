@@ -98,30 +98,32 @@ function addIngredient($post){
     $price = $post['price'];
 
     $types = ['topping', 'sauce', 'dough'];
-    $uploaddir =realpath(__DIR__) . '/../../assets/images/upload/';
+    $uploaddir =realpath(__DIR__) . '/../../assets/images/upload';
 
     $temp = explode(".", $_FILES["image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
 
 
-
+    
     if (move_uploaded_file($_FILES['image']['tmp_name'], $uploaddir."/".$newfilename)) {
 
-
+        
         $name = strtolower($name);
         $price*=100;
 
 
         if(!count_chars($name) > 1 || !in_array($type, $types) || !is_numeric($price)){
             //error due to name, type or price.
+            return json_encode(["error"=>2]);
         } else {
            return postNewIngredient($name, $type, $price, $newfilename);
 
         }
     } else {
         //error due to image.
-        $url = root()."/admin/admin.php?e-image=1";
-        header("Location: $url");
+        //$url = root()."/admin/admin.php?e-image=1";
+        //header("Location: $url");
+        return json_encode(["error"=>1]);
 
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 
-require_once(realpath(__DIR__) . './connection.php');
+require_once(realpath(__DIR__) . '/connection.php');
 
 //hashing the pwd to put it in the database.
 function createAccount($nom, $prenom ,$password_hash, $mail){
