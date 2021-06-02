@@ -1,11 +1,12 @@
 /** FONT PART **/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
 @font-face {
     font-family: "MADE Soulmaze";
     src: url("../font/MADE Soulmaze PERSONAL USE.otf") format('truetype')
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
 
 /** GENERAL PART **/
 
@@ -17,6 +18,9 @@
     display: none!important;
 }
 
+a{
+    text-decoration: none;
+}
 .logoEzpizza{
     position: absolute;
     top: 30px;
@@ -571,7 +575,143 @@
     font-weight: bold;
 }
 
+/* CHOOSE PIZZA */
 
+.choose{
+    width: 100%;
+    color:white;
+    background: linear-gradient(to bottom, #FC3318 0%, #B00F0F 100%);
+
+    padding: 30px 0 100px 0;
+}
+
+.vitrine{
+    padding: 50px 0 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.vitrine .btn-submit{
+    margin-top: 50px;
+}
+
+.vitrine_carroussel {
+    width: 75%;
+
+}
+
+.vitrine_title, .vitrine_pizza_name, .loveBanderole h1, .seepizza h2, .seepizza h1{
+    font-family: "MADE Soulmaze";
+}
+
+
+.splide__slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.splide__pagination{
+    bottom: -2em!important;
+}
+
+.vitrine_carroussel img{
+    max-height: 25vh;
+}
+
+.vitrine_pizza{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.vitrine_pizza_name{
+    margin: auto;
+
+}
+
+.vitrine_pizza_price{
+    font-size: 30px;
+
+}
+
+.vitrine_pizza p{
+    margin: 0;
+}
+
+/*----------loveBanderole----------*/
+.loveBanderole{
+    background: url('/assets/images/loveBanderole_background.jpg') no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.loveBanderole h1{
+    text-align: center;
+}
+
+.loveBanderole_heart{
+    height: 40px;
+    transform: rotate(25deg);
+}
+
+/*----------seepizza----------*/
+
+.seepizza{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seepizza h2{
+    text-align: center;
+}
+
+.seepizza_herebutton{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.seepizza_herebutton h2{
+    margin: 0;
+
+}
+
+.seepizza_herebutton h1{
+    margin: 0;
+    font-size: 140px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.seepizza_herebutton_fleche{
+    margin-top: 10px;
+    max-height: 100px;
+}
+
+
+.splide__slide{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.bottom-40{
+    bottom: 30px;
+}
 
 
 

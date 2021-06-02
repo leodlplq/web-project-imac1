@@ -125,7 +125,21 @@ function getJSONofOrder($id){
 
     return json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
+function addExistingPizzaInOrder($post){
+    $idPizza = $post['idPizza'];
+    $idOrder = $post['idOrder'];
+    $idClient = $post['idClient'];
+    $dessertId = explode(",", $post['dessert']);
+    $drinkId = explode(",", $post['drink']);
 
+
+    addOrder($idOrder, $idClient);
+    addPizzaInOrder($idOrder, $idPizza);
+    addDessertInOrder($idOrder, $dessertId);
+    addDrinkInOrder($idOrder, $drinkId);
+
+    return getJSONofOrder($idOrder);
+}
 
 function addEverythingInOrder($post){
 

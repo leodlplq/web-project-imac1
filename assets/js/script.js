@@ -51,7 +51,7 @@ document.ready( () => {
 
     _btnNext1.addEventListener('click', (e)=>{
         e.preventDefault();
-
+        const idUser = document.querySelector('.idUser').dataset.id;
         const doughE = document.querySelectorAll('.doughElementInput');
         const sauceE = document.querySelectorAll('.sauceElementInput');
         const nameP = document.querySelector('#pizzaNameInput')

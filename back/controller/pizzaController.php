@@ -18,7 +18,8 @@ function getJSONofAllPizza(){
                 'name'=>$tab["nomPizza"],
                 'existingOne'=>$tab["existe"],
                 'ingredients'=>$ingredients["ingredient"],
-                'price'=>$ingredients['price']
+                'price'=>$ingredients['price'],
+                'url'=>$tab['url']
 
             ];
 
@@ -52,7 +53,8 @@ function getJSONofAllExistingPizza(){
                 'name'=>$tab["nomPizza"],
                 'existingOne'=>$tab["existe"],
                 'ingredients'=>$ingredients["ingredient"],
-                'price'=>$ingredients['price']
+                'price'=>$ingredients['price'],
+                'url'=>$tab['url']
 
             ];
 
@@ -86,8 +88,8 @@ function getJSONofAllUniquePizza(){
                 'name'=>$tab["nomPizza"],
                 'existingOne'=>$tab["existe"],
                 'ingredients'=>$ingredients["ingredient"],
-                'price'=>$ingredients['price']
-
+                'price'=>$ingredients['price'],
+                'url'=>$tab['url']
             ];
 
             $i++;
@@ -123,8 +125,8 @@ function getJSONofPizza($id){
             'name'=>$pizza[0]["nomPizza"],
             'existingOne'=>$pizza[0]["existe"],
             'ingredients'=>$ingredients["ingredient"],
-            'price'=>$ingredients['price']
-
+            'price'=>$ingredients['price'],
+            'url'=>$pizza[0]['url']
         ];
 
         $i++;
@@ -169,7 +171,8 @@ function getTabOfPizzaInOrder($id){
                 'name'=>$tab["nomPizza"],
                 'existingOne'=>$tab["existe"],
                 'ingredients'=>$ingredients["ingredient"],
-                'price'=>$ingredients['price']
+                'price'=>$ingredients['price'],
+                'url'=>$tab['url']
 
             ];
 

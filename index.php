@@ -57,7 +57,7 @@ session_start();
     <div class="conteneur">
         <div class="row ligne_accueil_ez_pizza">
 
-            <a href="#" class="accueil_ez_pizza left">
+            <a href="choose.php" class="accueil_ez_pizza left">
                 <div>
                     <img src="/assets/images/logo.png" class="logo" alt="Logo de ez_pizza"/>
                     <img src="/assets/images/pizza_carton.jpg" alt="Discover our pizza">

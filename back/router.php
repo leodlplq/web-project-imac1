@@ -320,6 +320,20 @@ switch($url[$nbUrl]){
 
         if(isset($url[$nbUrl+1])){
             switch ($url[$nbUrl+1]){
+
+                case 'existing':
+                    switch ($method){
+                        case 'POST':
+                            echo addExistingPizzaInOrder($_POST);
+                            break;
+
+                        case 'GET':
+                            //echo getJSONofAllUniquePizza();
+                            break;
+
+                    }
+                    break;
+
                 case 'pizza':
                     switch ($method){
                         case 'POST':
